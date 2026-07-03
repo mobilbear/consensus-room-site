@@ -1,0 +1,32 @@
+# CUSP42 Labs
+
+> CUSP42 Labs (https://cusp42.com/) is an independent AI thought lab and product studio for plural reasoning, scenario analysis, institutional risk, and long-horizon judgment. It builds methods, tools, essays, and curated resources for multi-agent AI debate, AI-assisted research, AI political economy, and AI-society futures. It is an independent side project and does not represent any employer, institution, client, or official organization.
+
+CUSP42's first live product is Consensus Room, a free browser extension that runs one research question across multiple AI models with round-based debate, voting, and a consensus report.
+
+## Main pages
+
+- [Home](https://cusp42.com/index.html): What CUSP42 Labs is — a thought lab for the civilizational cusp of AI.
+- [Work](https://cusp42.com/work.html): Tools and products, including Consensus Room (live) and scenario, thought-experiment, and quant tools in development.
+- [Thought Lab](https://cusp42.com/lab.html): Methods for thinking with AI — question architecture, plural reasoning, scenario discipline.
+- [CUSP42 Atlas](https://cusp42.com/atlas.html): A curated gateway of 38 verified, durable resources for AI, institutional risk, political economy, multi-agent reasoning, scenario analysis, AI research workflows, and agent-society simulation. Six themes plus audience pathways.
+- [Ideas](https://cusp42.com/ideas.html): Writing themes and future directions, including a possible AI Society Simulation / Earth Social Simulator.
+- [FAQ](https://cusp42.com/faq.html): Direct answers about CUSP42, Consensus Room, and the meaning of the name.
+- [About](https://cusp42.com/about.html): The name, the principles, and the lab's independence.
+- [Contact](https://cusp42.com/contact.html): Email and public channels (cusp42@gmail.com).
+
+## Essays
+
+- [Too much intelligence, not enough society](https://cusp42.com/ideas/too-much-intelligence.html): How AI capability can outrun institutions, education, labor markets, and social absorption capacity.
+- [The great decoupling](https://cusp42.com/ideas/the-great-decoupling.html): Why AI may weaken the ladders that converted education and effort into stable middle-class life.
+- [Long-duration civilization](https://cusp42.com/ideas/long-duration-civilization.html): Modern civilization as a system of long-horizon commitments, and what happens when discount rates rise.
+
+## Machine-readable
+
+- [atlas.json](https://cusp42.com/atlas.json): Structured data for every CUSP42 Atlas resource (name, URL, type, theme, summary, why it matters, maintenance profile, last reviewed).
+- [sitemap.xml](https://cusp42.com/sitemap.xml): XML sitemap.
+
+## Products
+
+- [Consensus Room product page](https://mobilbear.github.io/consensus-room-site/): Multi-model AI debate in the browser.
+- [Consensus Room on the Chrome Web Store](https://chromewebstore.google.com/detail/consensus-room-multi-ai-d/emdbnpaicikiaceimoacjlfijgjemebk): Free install for Chrome and Edge.

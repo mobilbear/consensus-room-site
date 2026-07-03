@@ -1,238 +1,160 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Consensus Room — One prompt. Multiple AI agents. One consensus.</title>
-<meta content="Consensus Room lets you host structured discussions between AI assistants. Ask one question, let multiple agents respond, debate, vote, and export a final consensus report." name="description"/>
-
-<style>
-:root { --blue: #2563eb; --blue-dark: #1d4ed8; --ink: #111827; --muted: #6b7280; --line: #e5e7eb; --bg: #f8fafc; }
-
-* { box-sizing: border-box; }
-
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; margin: 0px; color: var(--ink); background: rgb(255, 255, 255); line-height: 1.6; }
-
-.wrap { max-width: 1040px; margin: 0px auto; padding: 0px 1.2rem; }
-
-a { color: var(--blue); text-decoration: none; }
-
-.btn { display: inline-block; border-radius: 8px; padding: 0.7rem 1.2rem; font-weight: 600; font-size: 0.95rem; }
-
-.btn-primary { background: var(--blue); color: rgb(255, 255, 255); }
-
-.btn-primary:hover { background: var(--blue-dark); }
-
-.btn-secondary { background: rgb(255, 255, 255); color: rgb(55, 65, 81); border: 1px solid var(--line); }
-
-.btn-secondary:hover { background: var(--bg); }
-
-header { border-bottom: 1px solid var(--line); position: sticky; top: 0px; background: rgb(255, 255, 255); z-index: 10; }
-
-header .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 0.9rem; padding-bottom: 0.9rem; }
-
-.brand { font-weight: 700; }
-
-.brand small { color: var(--muted); font-weight: 400; }
-
-.nav { display: flex; align-items: center; gap: 1.1rem; }
-
-.nav a { color: rgb(55, 65, 81); font-size: 0.92rem; }
-
-.nav a:hover { color: var(--blue); }
-
-.nav a.btn { color: rgb(255, 255, 255); }
-
-.nav a.btn:hover { color: rgb(255, 255, 255); }
-
-.lead { text-align: center; max-width: 720px; margin: -0.4rem auto 1.6rem; color: rgb(75, 85, 99); font-size: 1.02rem; }
-
-.hero { text-align: center; padding: 3.4rem 0px 2.6rem; }
-
-.label { color: var(--muted); font-size: 0.9rem; }
-
-.hero h1 { font-size: 2.4rem; margin: 0.6rem 0px 0.8rem; letter-spacing: -0.02em; }
-
-.hero p.sub { font-size: 1.12rem; color: rgb(55, 65, 81); max-width: 680px; margin: 0px auto 1.6rem; }
-
-.cta-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
-
-.fineprint { color: var(--muted); font-size: 0.85rem; margin-top: 1.2rem; }
-
-section { padding: 2.6rem 0px; border-top: 1px solid var(--line); }
-
-h2 { font-size: 1.5rem; text-align: center; margin: 0px 0px 1.6rem; }
-
-.grid { display: grid; gap: 1rem; }
-
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-
-.card { border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem; background: rgb(255, 255, 255); }
-
-.card .step { color: var(--blue); font-weight: 700; font-size: 0.85rem; }
-
-.card h3 { margin: 0.3rem 0px 0.4rem; font-size: 1.02rem; }
-
-.card p { margin: 0px; color: rgb(75, 85, 99); font-size: 0.92rem; }
-
-.prose { max-width: 760px; margin: 0px auto; }
-
-.prose p { color: rgb(55, 65, 81); font-size: 1rem; margin: 0px 0px 1rem; }
-
-.highlight { border-left: 4px solid var(--blue); background: var(--bg); padding: 0.9rem 1.1rem; border-radius: 0px 8px 8px 0px; font-weight: 600; color: var(--ink); margin: 1.4rem auto 0px; max-width: 760px; }
-
-.plan { border: 1px solid var(--line); border-radius: 10px; padding: 1.3rem; }
-
-.plan h3 { margin: 0px 0px 0.3rem; }
-
-.plan .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.12rem 0.5rem; border-radius: 999px; background: rgb(238, 242, 255); color: var(--blue-dark); margin-bottom: 0.6rem; }
-
-.plan ul { margin: 0.4rem 0px 0px; padding-left: 1.1rem; color: rgb(75, 85, 99); font-size: 0.92rem; }
-
-.plan li { margin: 0.25rem 0px; }
-
-.trust { background: var(--bg); }
-
-.trust .wrap { max-width: 820px; }
-
-.trust p { color: rgb(75, 85, 99); font-size: 0.95rem; }
-
-.trust .links { margin-top: 1.2rem; }
-
-footer { border-top: 1px solid var(--line); padding: 1.8rem 0px; color: var(--muted); font-size: 0.88rem; text-align: center; }
-
-footer a { color: var(--muted); }
-
-footer a:hover { color: var(--blue); }
-
-@media (max-width: 880px) {
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
-  .hero h1 { font-size: 1.9rem; }
-}
-
-@media (max-width: 560px) {
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .nav a:not(.btn) { display: none; }
-}
-</style></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CUSP42 Labs — Thought lab for the AI civilizational cusp</title>
+  <meta name="description" content="CUSP42 Labs is an independent AI thought lab building tools and methods for scenario analysis, plural reasoning, thought experiments, and civilizational futures in the AI age." />
+  <link rel="canonical" href="https://cusp42.com/" />
+  <meta property="og:title" content="CUSP42 Labs" />
+  <meta property="og:description" content="At the civilizational cusp of AI, CUSP42 Labs builds better rooms for thinking: scenario analysis, plural reasoning, and AI-assisted thought experiments." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cusp42.com/" />
+  <meta property="og:image" content="https://cusp42.com/assets/cusp42-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CUSP42 Labs" />
+  <meta name="twitter:description" content="An independent AI thought lab for scenario analysis, plural reasoning, and AI-assisted thought experiments." />
+  <meta name="twitter:image" content="https://cusp42.com/assets/cusp42-hero.jpg" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CUSP42 Labs",
+    "alternateName": "CUSP42",
+    "url": "https://cusp42.com/",
+    "logo": "https://cusp42.com/assets/cusp42-logo-lockup.png",
+    "email": "cusp42@gmail.com",
+    "description": "CUSP42 Labs is an independent AI thought lab building tools and methods for scenario analysis, plural reasoning, AI-assisted thought experiments, and long-horizon judgment in the AI age.",
+    "knowsAbout": ["Generative AI","Scenario analysis","Plural reasoning","Multi-model AI debate","Thought experiments","Risk and quantitative reasoning","Long-duration civilization","AI institutional risk","AI political economy","Strategic foresight","Multi-agent reasoning"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CUSP42 Labs",
+    "url": "https://cusp42.com/",
+    "description": "A thought lab for the civilizational cusp of AI: methods and tools for structured disagreement, scenario analysis, and AI-assisted thought experiments."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Consensus Room",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome, Edge (Chromium)",
+    "url": "https://mobilbear.github.io/consensus-room-site/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/consensus-room-multi-ai-d/emdbnpaicikiaceimoacjlfijgjemebk",
+    "description": "A browser extension for running structured debates across multiple AI models: round-based debate, model comparison, voting, auditable disagreement, and consensus reports for research questions where a single model answer is too fragile.",
+    "creator": { "@type": "Organization", "name": "CUSP42 Labs", "url": "https://cusp42.com/" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
 <body>
-<header>
-<div class="wrap">
-<div class="brand">Consensus Room <small>by CUSP42 Labs</small></div>
-<nav class="nav">
-<a href="#top">Home</a>
-<a href="privacy.html">Privacy</a>
-<a href="disclaimer.html">Disclaimer</a>
-<a href="mailto:cusp42@gmail.com?subject=Consensus%20Room%20Support">Support</a>
-<a class="btn btn-primary" href="https://chromewebstore.google.com/detail/consensus-room-multi-ai-d/emdbnpaicikiaceimoacjlfijgjemebk">Add to Chrome</a>
-</nav>
-</div>
-</header>
-<div class="hero" id="top">
-<div class="wrap">
-<div class="label">Consensus Room by CUSP42 Labs</div>
-<h1>One prompt. Multiple AI agents. One consensus.</h1>
-<p class="sub">Consensus Room lets you host structured discussions between AI assistants. Ask one question, let multiple agents respond, debate, vote, and export a final consensus report.</p>
-<div class="cta-row">
-<a class="btn btn-primary" href="https://chromewebstore.google.com/detail/consensus-room-multi-ai-d/emdbnpaicikiaceimoacjlfijgjemebk">Add to Chrome — Free Web Mode</a>
-<a class="btn btn-secondary" href="#example">View example report</a>
-</div>
-<p class="fineprint">Free Web Mode uses your own logged-in AI web tabs. Premium API Mode is planned for faster and more reliable professional workflows.</p>
-<p class="fineprint">Support: <a href="mailto:cusp42@gmail.com?subject=Consensus%20Room%20Support">cusp42@gmail.com</a></p>
-</div>
-</div>
-<section id="why">
-<div class="wrap">
-<h2>Why I built Consensus Room</h2>
-<div class="prose">
-<p>Consensus Room was built for research, engineering, and writing workflows where one answer is not enough.</p>
-<p>A single AI answer is often useful, but it can be too confident, too narrow, or blind to its own assumptions. When I compared several AI models manually, I often got better thinking: different angles, clearer disagreements, stronger caveats, and more practical conclusions.</p>
-<p>But doing this by hand was messy — switching tabs, copying prompts, tracking rounds, and summarizing everything into a report.</p>
-<p>Consensus Room turns that process into a structured debate room. You ask one question, several AI assistants respond, challenge each other, vote, and produce a final consensus report.</p>
-<p>It is built for people who use AI not just for quick answers, but for deeper thinking, research, engineering judgment, writing, learning, and creative exploration.</p>
-</div>
-<p class="highlight">Consensus Room is for people who use AI for judgment, not just quick answers.</p>
-</div>
-</section>
-<section id="how">
-<div class="wrap">
-<h2>How it works</h2>
-<div class="grid grid-4">
-<div class="card"><div class="step">Step 1</div><h3>Create a room</h3><p>Set the topic, goal, and optional supporting context.</p></div>
-<div class="card"><div class="step">Step 2</div><h3>Add AI participants</h3><p>Bind compatible AI assistant pages, or connect API workflows in future API Mode.</p></div>
-<div class="card"><div class="step">Step 3</div><h3>Run the debate</h3><p>Let agents answer, challenge each other, vote, and refine the discussion across rounds.</p></div>
-<div class="card"><div class="step">Step 4</div><h3>Export the report</h3><p>Generate a structured final report with conclusion, agreement, disagreement, caveats, and next steps.</p></div>
-</div>
-</div>
-</section>
-<section id="who">
-<div class="wrap">
-<h2>Who it is for</h2>
-<div class="grid grid-3">
-<div class="card"><h3>Deep thinkers and writers</h3><p>Use multiple AI perspectives to challenge an argument before you publish or decide.</p></div>
-<div class="card"><h3>Researchers and students</h3><p>Turn a question into a structured debate with agreement, disagreement, caveats, and next steps.</p></div>
-<div class="card"><h3>Engineers and builders</h3><p>Compare design options, trade-offs, implementation risks, and architecture choices.</p></div>
-<div class="card"><h3>Founders and product people</h3><p>Test strategy, positioning, pricing, and launch ideas from several angles.</p></div>
-<div class="card"><h3>Analysts and decision-makers</h3><p>Stress-test assumptions before relying on a single AI answer.</p></div>
-<div class="card"><h3>Creative explorers</h3><p>Use AI debate to generate new angles, tensions, and ideas.</p></div>
-</div>
-</div>
-</section>
-<section id="example">
-<div class="wrap">
-<h2>Free Web Mode vs Premium API Mode</h2>
-<div class="grid grid-2">
-<div class="plan">
-<h3>Free Web Mode</h3>
-<ul>
-<li>Free to use.</li>
-<li>Use your own logged-in AI web tabs.</li>
-<li>Create structured AI discussions.</li>
-<li>Run debate rounds.</li>
-<li>Generate final reports.</li>
-<li>Export Markdown / Word.</li>
-<li>Local-first browser workflow.</li>
-</ul>
-</div>
-<div class="plan">
-<span class="tag">Planned · coming soon</span>
-<h3>Premium API Mode</h3>
-<ul>
-<li>Planned premium workflow.</li>
-<li>Bring your own API keys.</li>
-<li>Use compatible API workflows.</li>
-<li>No browser tabs to drive.</li>
-<li>Faster multi-agent rounds.</li>
-<li>More reliable automation.</li>
-<li>Custom model routing.</li>
-<li>Saved presets and advanced workflows.</li>
-<li>API usage and cost controls.</li>
-</ul>
-<p class="fineprint">Premium API Mode is planned for users who want faster and more reliable official API-based workflows. Provider API charges may apply.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="trust">
-<div class="wrap">
-<h2>Privacy, trust, and responsible use</h2>
-<p>Consensus Room is designed as a local-first browser workflow. The extension does not collect passwords, cookies, or session tokens. Users control what content is sent to third-party AI services.</p>
-<p>In Web Mode, users use their own AI accounts and are responsible for complying with each provider's terms, usage limits, and policies.</p>
-<p>Consensus Room does not bypass paywalls, rate limits, CAPTCHAs, access controls, or safety restrictions.</p>
-<p>If you enable API Mode, your API keys stay local in your browser and are sent only to the provider you choose.</p>
-<p>AI outputs may be inaccurate or incomplete. Please review results before relying on them, especially for professional, legal, financial, medical, investment, or compliance decisions.</p>
-<p class="links">Read the <a href="privacy.html">Privacy Policy</a>  ·  Read the <a href="disclaimer.html">Disclaimer</a></p>
-</div>
-</section>
-<footer>
-<div class="wrap">
-    Consensus Room by CUSP42 Labs<br/>
-<a href="privacy.html">Privacy Policy</a> ·
-    <a href="disclaimer.html">Disclaimer</a> ·
-    <a href="mailto:cusp42@gmail.com?subject=Consensus%20Room%20Support">Support</a><br/>
-    Consensus Room is an independent AI software product by CUSP42 Labs. It is not affiliated with, endorsed by, or sponsored by any AI model provider, browser company, or third-party platform.
-  </div>
-</footer>
-</body></html>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand brand-lockup" href="index.html" aria-label="CUSP42 Labs home"><img src="assets/cusp42-logo-lockup.png" alt="CUSP42 Labs" /></a>
+      <button class="nav-toggle" type="button" aria-expanded="false">Menu</button>
+      <div class="nav-links"><a href="index.html">Home</a><a href="work.html">Work</a><a href="lab.html">Thought Lab</a><a class="nav-atlas" href="atlas.html">Atlas</a><a href="ideas.html">Ideas</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="sitemap.html">Sitemap</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero hero-image" aria-label="CUSP42 hero image: cosmic cusp and 42">
+      <div class="hero-copy-panel">
+        <p class="eyebrow">Independent AI thought lab</p>
+        <h1 class="h1">A thought lab for the <span class="accent">civilizational cusp</span> of AI.</h1>
+        <p class="lede">The AI age may bend toward disorder, displacement, and institutional failure. It may also unlock a civilizational leap: ordinary people, small teams, researchers, and builders doing work that used to be too expensive, too slow, or simply impossible.</p>
+        <p class="copy">CUSP42 Labs exists for that uncertain middle space. We build methods and tools for structured disagreement, scenario analysis, AI-assisted thought experiments, and long-horizon judgment — so we do not drift through the transition with only slogans, panic, or one-model certainty.</p>
+        <div class="cta-row">
+          <a class="button primary" href="lab.html">Enter the thought lab</a>
+          <a class="button" href="work.html">Explore the tools</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Name as narrative</p>
+          <h2 class="section-title">CUSP42 is a place, a method, and a question.</h2>
+        </div>
+        <p class="copy">The name combines two ideas: the cusp, where history branches, and 42, the famous “ultimate answer” from <em>The Hitchhiker’s Guide to the Galaxy</em>. The point is not that we have the answer. The point is to build better ways to ask, test, and compare questions when the stakes are large.</p>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="tag">CUSP</span>
+          <h3>The edge of change</h3>
+          <p>A cusp is the threshold where old assumptions stop working and multiple futures become plausible. The AI transition is such a cusp.</p>
+        </article>
+        <article class="card">
+          <span class="tag">42</span>
+          <h3>The answer is not enough</h3>
+          <p>42 is a cosmic joke about ultimate answers. CUSP42 treats it seriously enough to ask: what questions are we failing to formulate?</p>
+        </article>
+        <article class="card">
+          <span class="tag">Labs</span>
+          <h3>Methods before slogans</h3>
+          <p>The lab turns civilizational questions into working methods: debate rooms, scenario engines, thought experiments, and reusable AI workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What we build</p>
+          <h2 class="section-title">A stack for deeper AI-assisted thinking.</h2>
+        </div>
+        <p class="copy">Consensus Room is the first public product under this larger direction. The longer path is a methodology stack for AI-based scenario analysis, structured disagreement, social thought experiments, and civilizational-scale reasoning.</p>
+      </div>
+      <div class="grid two">
+        <article class="feature"><h3>Consensus Room <span class="status live">Live</span></h3><p>Multi-model debate, structured disagreement, voting, and final reports for research questions where one model answer is too fragile.</p><div class="mini-links"><a href="https://chromewebstore.google.com/detail/consensus-room-multi-ai-d/emdbnpaicikiaceimoacjlfijgjemebk" target="_blank" rel="noopener">Install Chrome extension</a><a href="https://mobilbear.github.io/consensus-room-site/" target="_blank" rel="noopener">Product page</a></div></article>
+        <article class="feature"><h3>AI scenario analysis tools <span class="status dev">In development</span></h3><p>Scenario trees, assumptions, shocks, stakeholder reactions, second-order effects, and narrative-to-structured-output workflows.</p></article>
+        <article class="feature"><h3>AI thought experiment studio <span class="status dev">In development</span></h3><p>A controlled space to test philosophical, strategic, social, and policy questions through roles, counterfactuals, constraints, and rounds.</p></article>
+        <article class="feature"><h3>Risk and quant reasoning modules <span class="status dev">In development</span></h3><p>Local-first simulation, backtesting, sensitivity testing, and model comparison tools for users who need transparent assumptions.</p></article>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="quote">“CUSP42 is not trying to make AI think for us. It is trying to make the act of thinking with AI more structured, more plural, and more responsible.”<small>CUSP42 Labs principle</small></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Explore the Atlas</p>
+          <h2 class="section-title">A curated gateway to a difficult territory.</h2>
+        </div>
+        <p class="copy">CUSP42 Atlas is a curated gateway to serious resources on AI, institutional risk, political economy, scenario analysis, multi-agent reasoning, and AI-society futures — research hubs, canonical papers, durable frameworks, and living reports, each with CUSP42's reading of why it matters.</p>
+      </div>
+      <div class="cta-row compact">
+        <a class="button primary" href="atlas.html">Open CUSP42 Atlas</a>
+        <a class="button" href="atlas.html#pathways">Start with a pathway</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Long-term shape</p>
+          <h2 class="section-title">From browser extension to thought laboratory.</h2>
+        </div>
+        <p class="copy">The business path can stay modest and credible: free public tools first, then premium workflows, API layers, custom research packs, and methodology templates for serious users.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><strong>Public layer</strong><p>Free tools, public essays, GitHub releases, Chrome/Edge extensions, transparent methodology notes, and community feedback.</p></div>
+        <div class="timeline-item"><strong>Method layer</strong><p>Reusable frameworks for consensus debates, adversarial review, long-horizon scenario analysis, and thought experiment design.</p></div>
+        <div class="timeline-item"><strong>Product layer</strong><p>Premium API mode, saved workspaces, research templates, private packs, and specialized AI reasoning workflows for individuals and teams.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><nav class="footer-nav" aria-label="Footer site map"><a href="index.html">Home</a><a href="work.html">Work</a><a href="lab.html">Thought Lab</a><a href="atlas.html">Atlas</a><a href="ideas.html">Ideas</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="sitemap.html">Sitemap</a></nav><div class="footer-inner"><div>© <span id="year">2026</span> CUSP42 Labs. Independent research and product experiments. Views are personal and do not represent any employer, institution, client, or affiliated organization.</div><div><a href="contact.html">cusp42@gmail.com</a></div></div></footer>
+  <script src="assets/site.js"></script><script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
